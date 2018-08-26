@@ -1,0 +1,94 @@
+---
+output: github_document
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "tools/"
+)
+```
+
+## Guest Lectures
+
+STAT 385 @ UIUC often invites lecturers from industry into the classroom to discuss 
+topics that students are interested in. Materials from these guest lecturers 
+such as lecture slides, abstracts, biographies, and social data can be found here. 
+
+### Invited Lecturers
+
+```{r, echo = FALSE}
+# This _really_ should be done with a template.
+
+# Read in Raw Lecture Data
+raw_lec_data = yaml::read_yaml("admin/all-guest-lectures.yml")
+
+# Build DataFrame with Embedded List
+df_lec = as.data.frame( do.call(rbind, raw_lec_data), row.names = FALSE)
+
+# Rearrange data based on lecture date.
+df_lec = df_lec[order(as.Date(unlist(df_lec[["date"]])), decreasing = TRUE), ]
+
+# Path to image
+df_lec$image = 
+    paste0("![",df_lec$guest_lecturer, "](",
+           file.path("headshots", 
+                     gsub("[[:space:]]", "-", 
+                          gsub("[[:punct:]]", "",
+                               tolower(df_lec$guest_lecturer)
+                               )
+                          )
+                     ),
+           ".jpg)"
+    )
+
+df_lec = df_lec[, c(ncol(df_lec), seq_len(ncol(df_lec) - 1))]
+
+# Embed the appropriate icon
+select_fa_icon = function(x) {
+    switch(x,
+           "stackoverflow" = fontawesome::fa(name = "stack-exchange"),
+           "website"       = fontawesome::fa(name = "home"),
+           "linkedin"      = fontawesome::fa(name = "linkedin"),
+           "github"        = fontawesome::fa(name = "github"),
+           "twitter"       = fontawesome::fa(name = "twitter"),
+           "code"          = fontawesome::fa(name = "file-code"),
+           "video"         = fontawesome::fa(name = "youtube"),
+           "slides"        = fontawesome::fa(name = "file-image"),
+           stop("The name ", names(x), " is not supported.")
+    )
+}
+
+# Condense media
+make_profile_icons = function(profile_data) {
+    lapply(profile_data, function(x) {
+        media = names(x) 
+        social_profile = media
+        
+        for(i in seq_along(x)) {
+            active_site = media[i]
+            social_profile[i] = paste0("[", select_fa_icon(active_site), "](", x[i] ,")")
+        }
+        
+        paste0(social_profile, collapse = " ")
+    })
+}
+
+df_lec[["social"]] = make_profile_icons(df_lec[,"social"])
+df_lec[["resources"]] = make_profile_icons(df_lec[,"resources"])
+
+colnames(df_lec) = c("Picture", "Title", "Abstract", "Date", "Lecturer", "Social", "Resources")
+
+knitr::kable(df_lec, row.names = FALSE)
+```
+
+```{r, include = FALSE, eval = FALSE}
+my_df = data.frame(
+    icons = c('`r fontawesome::fa(name = "home")`', '`r fontawesome::fa(name = "youtube")`')
+)
+
+knitr::knit_expand(knitr::kable(my_df))
+```
+
+

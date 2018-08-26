@@ -1,0 +1,46 @@
+- lecture_title: 'Dependable Development of Statistical Models'
+  lecture_abstract: 'Development can take many forms, from a single script to a large enterprise system built from millions of lines of code in thousands of files. In either case, we create technical debt for ourselves an others if we do not make efforts to make our code clear, reusable, and extensible. To that end, we will walk through the development of a statistical model for S&P 500 price prediction. We will address each stage of the development starting with the scratch work in an interactive R session and culminating in a production implementation. As we follow our ideas from conception to production, we will address how we can better organize and structure our code. The end result will be a maintainable system that can be easily extended and tested in the future.'
+  date: '2017-04-21'
+  guest_lecturer: 'Dan C. Dillon'
+  social:
+    linkedin: https://www.linkedin.com/in/danielcdillon
+    github: https://github.com/dcdillon
+  resources:
+    code: https://github.com/stat385uiuc/dependable-development
+    video: https://www.youtube.com/watch?v=PHEmaeoCW9E
+- lecture_title: 'Real World R'
+  lecture_abstract: 'An exploration of how the City of Chicago uses R to generate insights into its data.'
+  date: '2017-12-11'
+  guest_lecturer: 'Gene Leynes'
+  social:
+    linkedin: https://www.linkedin.com/in/geneleynes
+    website: http://geneorama.com
+    github: https://github.com/geneorama
+    twitter: https://twitter.com/geneorama
+  resources:
+    slides: "github"
+- lecture_title: 'Extending R with C++: Motivation, Examples, and Context'
+  lecture_abstract: 'Starting from a brief _Why?_ motivating the use of extensions to R, we will focus on _How_ via a set of hands-on examples.'
+  date: '2018-04-20'
+  guest_lecturer: 'Dirk Eddelbuettel'
+  social:
+    website: http://dirk.eddelbuettel.com
+    twitter: http://twitter.com/eddelbuettel
+    github: https://github.com/eddelbuettel
+    stackoverflow: http://stackoverflow.com/users/143305/dirk-eddelbuettel
+    linkedin: http://www.linkedin.com/in/dirkeddelbuettel/
+  resources:
+    slides: http://dirk.eddelbuettel.com/papers/uiuc_stat385_apr2018.pdf
+- lecture_title: 'Learning Strategies through Reinforcement Learning'
+  lecture_abstract: 'Reinforcement learning is the optimization of a task using machine learning and repeated simulations. A major application of this is creating artificial intelligences for games. With a proper setup of a reasonable task, human-understandable strategies can be discovered even with complex algorithms.'
+  date: '2018-04-27'
+  guest_lecturer: 'Max Candocia'
+  social:
+    website: http://maxcandocia.com/
+    linkedin: https://www.linkedin.com/in/max-candocia-a270b574
+    github: https://github.com/mcandocia
+    stackoverflow: https://stackoverflow.com/users/1362215/max-candocia
+    twitter: https://twitter.com/imthestatman
+  resources:
+    code: https://github.com/mcandocia/machi_ai
+    video: https://www.youtube.com/watch?v=YZtME6NDCAM
